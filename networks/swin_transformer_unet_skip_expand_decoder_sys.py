@@ -2,9 +2,8 @@ import torch
 import torch.nn as nn
 import torch.utils.checkpoint as checkpoint
 from einops import rearrange
-from timm.models.layers import DropPath, trunc_normal_
-def to_2tuple(x):
-    return x if isinstance(x, tuple) else (x, x)
+from timm.models.layers import DropPath,to_2tuple, trunc_normal_
+
 
 
 

@@ -17,8 +17,7 @@ from torch.nn import CrossEntropyLoss, Dropout, Softmax, Linear, Conv2d, LayerNo
 from torch.nn.modules.utils import _pair
 from scipy import ndimage
 from .swin_transformer_unet_skip_expand_decoder_sys import SwinTransformerSys
-def to_2tuple(x):
-    return x if isinstance(x, tuple) else (x, x)
+
 
 logger = logging.getLogger(__name__)
 
@@ -29,8 +28,8 @@ class SwinUnet(nn.Module):
         self.zero_head = zero_head
         self.config = config
 
-        self.swin_unet = SwinTransformerSys(img_size=to_2tuple(config.DATA.IMG_SIZE),
-                                patch_size=to_2tuple(config.MODEL.SWIN.PATCH_SIZE),
+        self.swin_unet = SwinTransformerSys(img_size=config.DATA.IMG_SIZE,
+                                patch_size=config.MODEL.SWIN.PATCH_SIZE,
                                 in_chans=config.MODEL.SWIN.IN_CHANS,
                                 num_classes=self.num_classes,
                                 embed_dim=config.MODEL.SWIN.EMBED_DIM,
